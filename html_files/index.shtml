@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <title>Smart Car Control Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #34495e;
+            margin: 25px 0 15px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+
+        .status-panel {
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 20px 0;
+        }
+
+        .status-panel p {
+            font-size: 1.2em;
+            margin: 15px 0;
+            color: #2c3e50;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .control-panel {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 350px;
+            margin: 20px auto;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        button {
+            border: none;
+            border-radius: 12px;
+            padding: 15px 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #3498db;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .rgb-button {
+            width: 100px;
+            height: 50px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .rgb-red { background: #ff4757}
+        .rgb-green { background:  #2ed573 }
+        .rgb-blue { background:  #1e90ff }
+
+        .motor-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 24px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #3498db, #2980b9);
+        }
+
+        .stop-btn {
+            background: linear-gradient(145deg, #e74c3c, #c0392b);
+        }
+
+        .refresh-link {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+
+        .refresh-link:hover {
+            color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            button {
+                padding: 12px 20px;
+            }
+            .motor-btn {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Smart Car Control Panel</h1>
+        
+        <div class="status-panel">
+            <h2>System Status</h2>
+            <p>Voltage: <span><!--#volt--> V</span></p>
+            <p>Temperature: <span><!--#temp--> C</span></p>
+            <p>LED Status: <span><!--#led--> V</span></p>
+        </div>
+
+        <h2>LED Control</h2>
+        <div class="button-group">
+            <a href="/led.cgi?led=1"><button>LED ON</button></a>
+            <a href="/led.cgi?led=0"><button>LED OFF</button></a>
+        </div>
+
+        <h2>Buzzer Control</h2>
+        <div class="button-group">
+            <a href="/led.cgi?buzzer=on"><button>Buzzer ON</button></a>
+            <a href="/led.cgi?buzzer=off"><button>Buzzer OFF</button></a>
+        </div>
+
+        <h2>RGB LED Control</h2>
+        <div class="button-group">
+            <a href="/led.cgi?rgbled=red"><button class="rgb-button rgb-red">Red</button></a>
+            <a href="/led.cgi?rgbled=green"><button class="rgb-button rgb-green">Green</button></a>
+            <a href="/led.cgi?rgbled=blue"><button class="rgb-button rgb-blue">Blue</button></a>
+            <a href="/led.cgi?rgbled=off"><button>Off</button></a>
+        </div>
+
+        <h2>Motor Control</h2>
+        <div class="control-panel">
+            <div></div>
+            <a href="/led.cgi?motor=forward" class="center-btn"><button class="motor-btn">^</button></a>
+            <div></div>
+            <a href="/led.cgi?motor=left"><button class="motor-btn"><<</button></a>
+            <a href="/led.cgi?motor=stop"><button class="motor-btn stop-btn">_</button></a>
+            <a href="/led.cgi?motor=right"><button class="motor-btn">>></button></a>
+            <div></div>
+            <a href="/led.cgi?motor=backward" class="center-btn"><button class="motor-btn">V</button></a>
+            <div></div>
+        </div>
+
+        <a href="/index.shtml" class="refresh-link">↻ Refresh Status</a>
+    </div>
+</body>
+</html>

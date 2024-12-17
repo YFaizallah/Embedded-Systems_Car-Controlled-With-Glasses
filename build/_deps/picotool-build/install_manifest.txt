@@ -1,0 +1,5 @@
+C:/Users/yoyom/Desktop/testagain/pico-w-server/build/_deps/picotool/picotool.exe
+C:/Users/yoyom/Desktop/testagain/pico-w-server/build/_deps/picotool/picotoolTargets.cmake
+C:/Users/yoyom/Desktop/testagain/pico-w-server/build/_deps/picotool/picotoolTargets-release.cmake
+C:/Users/yoyom/Desktop/testagain/pico-w-server/build/_deps/picotool/picotoolConfig.cmake
+C:/Users/yoyom/Desktop/testagain/pico-w-server/build/_deps/picotool/picotoolConfigVersion.cmake
